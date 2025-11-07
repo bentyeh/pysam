@@ -1,8 +1,8 @@
 #!/bin/sh -e
 
 case $1 in
-    ubuntu-*-arm)  expected=arm ;;
-    macos-13)      expected=x86_64 ;;
+    *-arm)         expected=arm ;;
+    *-intel)       expected=x86_64 ;;
     ubuntu-*)      expected=x86_64 ;;
     macos-*)       expected=arm ;;
     windows-*)     expected=x86_64 ;;

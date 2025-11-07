@@ -35,15 +35,15 @@ build_wheels_task:
         - name: Build ARM Linux py3.10-11 wheels
           env:
             CIBW_BUILD: "cp310-* cp311-*"
-        - name: Build ARM Linux py3.12-13 wheels
+        - name: Build ARM Linux py3.12-14 wheels
           env:
-            CIBW_BUILD: "cp312-* cp313-*"
+            CIBW_BUILD: "cp312-* cp313-* cp314-*"
 
     - name: Build ARM macOS wheels
       macos_instance:
         image: ghcr.io/cirruslabs/macos-sonoma-base:latest
       env:
-        CIBW_BUILD: "cp39-* cp310-* cp311-* cp312-* cp313-*"
+        CIBW_BUILD: "cp39-* cp310-* cp311-* cp312-* cp313-* cp314-*"
 
   alias: build_wheels
 
@@ -63,7 +63,7 @@ build_wheels_task:
 
   install_script: |
     python3 -m venv $VENV
-    pip3 install cibuildwheel==2.23.3
+    pip3 install cibuildwheel==3.2.1
 
   build_script: |
     cibuildwheel
